@@ -932,13 +932,13 @@
   });
 
   describe('passive mode', function () {
-    var template = '<bgf-pagination ' + [
+    var template = '<div> <div> <bgf-pagination ' + [
       'collection="collection"', 'page="page"',
       'per-page="perPage"', 'url="\'/items\'"'
-    ].join(' ') + '/>' + '<bgf-pagination ' + [
+    ].join(' ') + '/> </div> <div> <bgf-pagination ' + [
       'collection="collection"', 'page="page"',
       'per-page="perPage"', 'url="\'/items\'"', 'passive="true"'
-    ].join(' ') + '/>';
+    ].join(' ') + '/> </div> </div>';
 
     // TODO: This test is not effective because the problem only appears
     // in Firefox, but even the karma-firefox-launcher did not catch it
