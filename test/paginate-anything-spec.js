@@ -963,6 +963,34 @@
 
       expect(elt.find('ul').length).toEqual(2);
     });
+
+    it('updates page numbers when per page changes', function () {
+
+      function secondToLastLIShouldHaveText(ul, text){
+        var lis = ul.find('li');
+        expect(lis.eq(lis.length - 2).text().trim()).toEqual(text);
+      }
+
+      $httpBackend.whenGET('/items').respond(
+        finiteStringBackend('abcdefghijklmnopqrstuvwxyz')
+      );
+      scope.perPage = 5;
+
+      scope.page = 0;
+      var elt = $compile(template)(scope);
+      scope.$digest();
+      $httpBackend.flush();
+
+      secondToLastLIShouldHaveText(elt.find('ul').eq(0), '6');
+      secondToLastLIShouldHaveText(elt.find('ul').eq(1), '6');
+
+      scope.perPage = 3;
+      scope.$digest();
+      $httpBackend.flush();
+
+      secondToLastLIShouldHaveText(elt.find('ul').eq(0), '9');
+      secondToLastLIShouldHaveText(elt.find('ul').eq(1), '9');
+    });
   });
 
   describe('events', function () {
