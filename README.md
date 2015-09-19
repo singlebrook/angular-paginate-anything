@@ -158,7 +158,7 @@ param can be a scope variable as well as a hard-coded string.
     </tr>
     <tr>
       <td>passive</td>
-      <td>If using more than one pagination control set this to 'true' on all but the first.</td>
+      <td>If using more than one pagination control set this to 'true' on all but the first. You must include `num-pages="numPages"` on both paginators in order for the passive one to work correctly.</td>
       <td>Write-only.</td>
     </tr>
     <tr>

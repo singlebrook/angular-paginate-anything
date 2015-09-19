@@ -934,15 +934,13 @@
   describe('passive mode', function () {
     var template = '<div> <div> <bgf-pagination ' + [
       'collection="collection"', 'page="page"',
-      'per-page="perPage"', 'url="\'/items\'"'
+      'per-page="perPage"', 'num-pages="numPages"', 'url="\'/items\'"'
     ].join(' ') + '/> </div> <div> <bgf-pagination ' + [
       'collection="collection"', 'page="page"',
-      'per-page="perPage"', 'url="\'/items\'"', 'passive="true"'
+      'per-page="perPage"', 'num-pages="numPages"', 'url="\'/items\'"',
+      'passive="true"'
     ].join(' ') + '/> </div> </div>';
 
-    // TODO: This test is not effective because the problem only appears
-    // in Firefox, but even the karma-firefox-launcher did not catch it
-    // for some reason.
     it('prevents duplicate loading', function () {
       $httpBackend.expectGET('/items').respond(206,
         '', { 'Range-Unit': 'items', 'Content-Range': '0-24/26' }
