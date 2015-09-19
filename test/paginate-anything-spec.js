@@ -891,9 +891,9 @@
       scope.url     = '/letters';
       scope.perPage = 2;
       scope.page    = 0;
-      scope.transformResponse = function (oldData) { 
+      scope.transformResponse = function (oldData) {
         var newData = [];
-        angular.forEach(oldData, function (d) { 
+        angular.forEach(oldData, function (d) {
           newData.push(d.toUpperCase());
         });
         return newData;
