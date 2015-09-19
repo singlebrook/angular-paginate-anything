@@ -952,6 +952,17 @@
       $httpBackend.flush(1);
       $httpBackend.verifyNoOutstandingRequest();
     });
+
+    it('has two paginators', function () {
+      $httpBackend.expectGET('/items').respond(206,
+        '', { 'Range-Unit': 'items', 'Content-Range': '0-24/26' }
+      );
+      var elt = $compile(template)(scope);
+      scope.$digest();
+      $httpBackend.flush();
+
+      expect(elt.find('ul').length).toEqual(2);
+    });
   });
 
   describe('events', function () {
